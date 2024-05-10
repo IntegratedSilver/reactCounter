@@ -1,30 +1,40 @@
-import "bootstrap/dist/css/bootstrap-utilities.min.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 import { useState } from "react";
 
 
 
 const Counter = () => {
-    const [number, setNumber] = useState("0");
+    const [nmbr, setNmbr] = useState(0);
 
     const handleIncrease = () =>{
-        setNumber((prevCount) => prevCount +1);
+        setNmbr((prevNmbr) => prevNmbr +1);
     };
 
-    const handleDecrease = ()
+    const handleDecrease = () =>{
+        if (nmbr > 0) {
+            setNmbr((prevNmbr) => prevNmbr -1);
+        }  
+        };
 
-    const handleResetClick = () =>{
-        setNumber("0");
-        console.log(number)
+    const handleReset = () =>{
+        setNmbr(0);
     }
 
   return (
     <>
-        <div>
-            <h1>{number}</h1>
+        <br/>
+        <div className="container border border-success">
+        <div className="d-flex justify-content-center">
+            <h1>{nmbr}</h1>
         </div>
-        <div>
-        <button onClick={handleResetClick}>Reset Number</button>
+        <div className="d-flex justify-content-center">
+        <button className="btn btn-danger"onClick={handleDecrease}>Decrease Number</button>
+        <button className="btn btn-secondary" onClick={handleReset}>Reset Number</button>
+        <button className="btn btn-primary" onClick={handleIncrease}>Increase Number</button>
         </div>
+        <br/>
+        </div>
+        
     </>
   )
 }
